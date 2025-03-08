@@ -93,11 +93,14 @@ $result = $conn->query("SELECT * FROM incidents ORDER BY created_at DESC");
         th, td { border: 1px solid #ccc; padding: 8px; }
         button { background-color: #28a745; color: white; border: none; cursor: pointer; padding: 8px; border-radius: 5px; }
         button:hover { background-color: #218838; }
+        .logout { background-color: red; color: white; padding: 8px 15px; margin-bottom: 20px; border-radius: 5px; border: none; cursor: pointer; }
+        .logout:hover { background-color: #cc0000; }
         .message { color: green; }
     </style>
 </head>
 <body>
     <h1>Admin - Review Incident Reports</h1>
+    <a href="admin_logout.php"><button class="logout">Admin Logout</button></a>
 
     <div class="container">
         <?php if (!empty($message)) echo "<p class='message'>$message</p>"; ?>
@@ -134,6 +137,10 @@ $result = $conn->query("SELECT * FROM incidents ORDER BY created_at DESC");
                 </tr>
             <?php endwhile; ?>
         </table>
+
+        <a href="admin_logout.php"><button class="logout">Admin Logout</button></a>
     </div>
 </body>
 </html>
+
+<?php $conn->close(); ?>
